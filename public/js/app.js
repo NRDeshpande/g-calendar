@@ -18,7 +18,7 @@ app.filter('date_display', function() {
 	};
 });
 
-app.controller('events', function($scope, $http) {
+app.controller('events', function($scope, $http, $mdToast) {
 
     $scope.reset_event_ctrl_scope = function() {
         $scope.event_ctrl = {
@@ -33,8 +33,10 @@ app.controller('events', function($scope, $http) {
         $http.get(global.app_url+'/success/getEvents/?email_id='+email_id).then(function(resposne){
             if(resposne.data.status == "success") {
                 $scope.event_ctrl.data = resposne.data.data;
+                $scope.event_ctrl.loading = false;
             }
         },function(rejection) {
+            $mdToast.show($mdToast.simple().textContent(rejection.data.message));
         });
     };
 

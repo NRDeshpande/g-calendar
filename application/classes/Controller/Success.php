@@ -14,6 +14,9 @@ class Controller_Success extends Controller {
 		$user_events = [];
 		$email_id = get_query('email_id');
 
+		if($email_id != $_SESSION['email_id']) {
+			App::out("Invalid Email Id", false, 400);
+		}
 		$user_event_model = new Model_Events;
 		$user_events = $user_event_model->get_user_events($email_id);
 

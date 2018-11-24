@@ -3,6 +3,10 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+
+    <title>Google Calender - Events</title>
+    <link rel="shortcut icon" type="image/png" href="<?php echo App::url();?>/css/bug.png"/>
+
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
@@ -38,7 +42,12 @@
 
     <md-content md-scroll-y class="md-padding"  ng-init="get_events('<?php echo $email_id; ?>')">
         <div layout="row" layout-xs="column" layout-align="center center" flex="100" layout-wrap>
-            <md-card flex="30" md-theme="default" md-theme-watch ng-repeat="event in event_ctrl.data.events">
+            
+            <div class="no-event" layout="row" layout-sm="column" layout-align="space-around" ng-if="!event_ctrl.loading && event_ctrl.data.events.length==0">
+                <span> No Upcoming Events Found</span>
+            </div>
+            
+            <md-card flex="30" flex-xs="100" md-theme="default" md-theme-watch ng-repeat="event in event_ctrl.data.events" ng-if="!event_ctrl.loading && event_ctrl.data.events.length>0">
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">{{ event | jsdecode_string:'summary' }}</span>
@@ -53,6 +62,12 @@
                     </p>
                     </md-card-content>
             </md-card>
+
+
+            <div layout="row" layout-sm="column" layout-align="space-around" ng-if="event_ctrl.loading && event_ctrl.data.events.length>0">
+                <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </div>
+
         </div>
     </md-content>
 
