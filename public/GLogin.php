@@ -1,5 +1,5 @@
 <?php
-const PROJECT_URL = 'https://g-calendar.iamnikhil.com/';
+const PROJECT_URL = 'https://g-calendar.iamnikhil.com';
 const LOGOUT_URL = 'https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue='.PROJECT_URL.'/logout';
 const LOGIN_URL = PROJECT_URL.'/authentication';
 const INDEX_URL = PROJECT_URL;
