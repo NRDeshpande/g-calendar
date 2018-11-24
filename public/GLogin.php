@@ -1,7 +1,5 @@
 <?php
-const PROJECT_URL = 'http://localhost';
-// const CLIENT_ID = '677046573764-poa6aponsj09csgfprqn17420n2qipad.apps.googleusercontent.com';
-// const CLIENT_SECRET = '_6BGRgWaPUfHiAgLKuSNptEC';
+const PROJECT_URL = 'https://g-calendar.iamnikhil.com/';
 const LOGOUT_URL = 'https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue='.PROJECT_URL.'/logout';
 const LOGIN_URL = PROJECT_URL.'/authentication';
 const INDEX_URL = PROJECT_URL;
