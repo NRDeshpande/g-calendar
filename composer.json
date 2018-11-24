@@ -1,0 +1,9 @@
+{
+  "name": "G-Calender",
+  "require": {
+      "google/apiclient": "^2.0"
+  },
+  "config": {
+      "vendor-dir": "/home/g-calendar/vendor"
+  }
+}
