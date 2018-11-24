@@ -59,7 +59,7 @@
     <script>
         var global = {
             'app_url': '<?php echo App::url() ?>',
-            'logout_url': '<?php echo LOGOUT_URL; ?>'
+            'logout_url': '<?php echo App::logout_url(); ?>'
         };
     </script>
 </body>

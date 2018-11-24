@@ -38,12 +38,12 @@ unset($_SESSION['access_token']);
 				?>
 				User already logged in
 				<md-button class="tolowercase">
-					<a href="<?php echo LOGOUT_URL;?>" class="btn btn-large btn-primary">Logout</a>
+					<a href="<?php echo App::logout_url();?>" class="btn btn-large btn-primary">Logout</a>
 				</md-button>
 				<?php
 			} else {
 				?>
-				<md-button class="tolowercase" class="md-whiteframe-1dp" href="<?php echo LOGIN_URL;?>">
+				<md-button class="tolowercase" class="md-whiteframe-1dp" href="<?php echo App::login_url();?>">
 					<img width="180px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
 					Login with Google
 				</md-button>

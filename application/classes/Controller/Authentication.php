@@ -7,7 +7,7 @@ class Controller_Authentication extends Controller {
 		$client = new Google_Client();
 		$client->setClientId(App::client_id());
 		$client->setClientSecret(App::client_secret());
-		$client->setRedirectUri(LOGIN_URL);
+		$client->setRedirectUri(App::login_url());
 		$client->addScope(Google_Service_People::USERINFO_PROFILE);
 		$client->addScope(Google_Service_People::USERINFO_EMAIL);
 		$client->addScope(Google_Service_Calendar::CALENDAR);
@@ -21,7 +21,7 @@ class Controller_Authentication extends Controller {
 			$local_signin = new GLogin($client);
 			$_SESSION['email_id'] = $local_signin->get_user_info()->email;
 			$_SESSION['name'] = $local_signin->get_user_info()->name;
-			header('Location: ' . filter_var(DATA_INFO_URL, FILTER_SANITIZE_URL).'/app/'.$local_signin->get_user_info()->email);
+			header('Location: ' . filter_var(App::data_info_url(), FILTER_SANITIZE_URL).'/app/'.$local_signin->get_user_info()->email);
 		}
 	}
 }

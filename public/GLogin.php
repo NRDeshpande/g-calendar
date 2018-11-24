@@ -1,10 +1,4 @@
 <?php
-const PROJECT_URL = 'https://g-calendar.iamnikhil.com';
-const LOGOUT_URL = 'https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue='.PROJECT_URL.'/logout';
-const LOGIN_URL = PROJECT_URL.'/authentication';
-const INDEX_URL = PROJECT_URL;
-const DATA_INFO_URL = PROJECT_URL.'/success';
-
 class GLogin {
 	private $google_client;
 	private $google_auth;
@@ -34,6 +28,6 @@ class GLogin {
 	}
 
 	public static function redir_to_login() {
-		header('Location: ' . filter_var(LOGIN_URL, FILTER_SANITIZE_URL));
+		header('Location: ' . filter_var(App::login_url(), FILTER_SANITIZE_URL));
 	}
 }

@@ -70,6 +70,18 @@ class App {
         return self::$app_url;
     }
 
+    public static function login_url() {
+        return self::$app_url.'/authentication';
+    }
+
+    public static function logout_url() {
+        return 'https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue='.App::url().'/logout';
+    }
+
+    public static function data_info_url() {
+        return self::$app_url.'/success';
+    }
+
     public static function client_id() {
         return self::get_config('client_id');
     }

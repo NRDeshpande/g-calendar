@@ -12,7 +12,7 @@ class Controller_Logout extends Controller {
             $client->setAccessToken($_SESSION['access_token']);
             $local_signin = new GLogin($client);
             $local_signin->logout(); 
-            header('Location: ' . filter_var(INDEX_URL, FILTER_SANITIZE_URL));
+            header('Location: ' . filter_var(App::url(), FILTER_SANITIZE_URL));
         } else {
             GLogin::redir_to_login();
         }
