@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Authentication Controller, called for Google oAuth2 login
+ */
+
 class Controller_Authentication extends Controller {
 
 	public function action_index() {

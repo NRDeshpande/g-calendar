@@ -64,8 +64,9 @@
             </md-card>
 
 
-            <div layout="row" layout-sm="column" layout-align="space-around" ng-if="event_ctrl.loading && event_ctrl.data.events.length>0">
+            <div layout="column" layout-sm="column" layout-align="center center" ng-if="event_ctrl.loading">
                 <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                Fetching the calender events from Google, Please wait..
             </div>
 
         </div>

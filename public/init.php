@@ -63,38 +63,39 @@ class App {
         return null;
     }
 
-    public static function status() {
+    public static function status() : string {
         return self::get_config('instance');
     }
 
-    public static function url() {
+    public static function url() : string {
         return self::$app_url;
     }
 
-    public static function login_url() {
+    public static function login_url() : string {
         return self::$app_url.'/authentication';
     }
 
-    public static function logout_url() {
+    public static function logout_url()  : string{
         return 'https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue='.App::url().'/logout';
     }
 
-    public static function data_info_url() {
+    public static function data_info_url() : string {
         return self::$app_url.'/success';
     }
 
-    public static function client_id() {
+    public static function client_id() : string{
         return self::get_config('client_id');
     }
 
-    public static function client_secret() {
+    public static function client_secret() : string{
         return self::get_config('client_secret');
     }
 
-    public static function get_channel_salt() {
+    public static function get_channel_salt() : string {
         return self::$google_channel_salt;
     }
 
+    # Send API Response with Content-Type: application/json
     public static function out($message="Ok", $status=true, $code=200, $data=[]) {
         $status = $status === false ? "failure" : "success";
         header('Content-Type: application/json');

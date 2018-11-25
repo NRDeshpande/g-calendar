@@ -19,6 +19,9 @@ class Model_Events extends Model_Database
         return $events;
     }
 
+    /**
+     * Function to get the events based on the email id
+     */
     public function get_user_events($email_id) {
         $query = DB::select()->from($this->_user_event_table)->where('email_id', '=', $email_id);
         $this->_results = $query->execute();
@@ -26,6 +29,9 @@ class Model_Events extends Model_Database
         return $this->process_db_events();
     }
 
+    /**
+     * Function to save the events with user data and resource_id given by Google
+     */
     public function save_event($resource_id, $email_id, $name, $user_events) {
         $query = DB::insert($this->_user_event_table, ['resource_id', 'email_id', 'full_name', 'event'])
         ->values([$resource_id, $email_id, $name, $user_events]);
@@ -33,6 +39,9 @@ class Model_Events extends Model_Database
         $this->_results = $query->execute();
     }
 
+    /**
+     * Function to delete the events based on the Google's resource_id
+     */
     public function delete_events_for_resource($resource_id) {
         $query = DB::delete($this->_user_event_table)->where('resource_id', '=', $resource_id);
         $this->_results = $query->execute();

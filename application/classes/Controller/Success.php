@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Success Controller, to fetch the events from the google for logging user and store into mysql DB
+ */
+
 class Controller_Success extends Controller {
 
 	public function action_app() {
@@ -14,12 +18,19 @@ class Controller_Success extends Controller {
 		$user_events = [];
 		$email_id = get_query('email_id');
 
+		/**
+		 * Need to validate the email_id sent by client(browser)
+		 * LoggedIn user should not change the email_id in the browser URL and get the events of other users.
+		 */
 		if($email_id != $_SESSION['email_id']) {
 			App::out("Invalid Email Id", false, 400);
 		}
+
+		# Check if the user events are already persent in the Local DB
 		$user_event_model = new Model_Events;
 		$user_events = $user_event_model->get_user_events($email_id);
 
+		# If no events found in the Local DB, then connect Google to get the events and store in DB
 		if(empty($user_events)) {
 			if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 				$client = new Google_Client();
@@ -38,9 +49,10 @@ class Controller_Success extends Controller {
 				$results = $calendar_service->events->listEvents('primary', $params);
 
 				if(!empty($results->getItems())) {
+
+					# Creating the webhook for Google to ping on any event change
 					$channel =  new Google_Service_Calendar_Channel($client);
 					$channel_id = md5(App::get_channel_salt().$email_id.time().random_int(1, 10));
-
 					$channel->setId($channel_id);
 					$channel->setType('web_hook');
 					$channel->setAddress('https://g-calendar.iamnikhil.com/rest');
@@ -61,7 +73,8 @@ class Controller_Success extends Controller {
 							'start_time' => $start,
 							'end_time' => $end
 						]);
-							
+						
+						# Store the event into DB with resourceId
 						$user_event_model->save_event($watch_event->resourceId, $email_id, $_SESSION['name'], $single_event);
 
 						$user_events[] =  $single_event;

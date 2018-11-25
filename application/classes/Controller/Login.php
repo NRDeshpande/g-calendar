@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Login Controller, to render the login view
+ */
+
 class Controller_Login extends Controller {
 
 	public function action_index() {

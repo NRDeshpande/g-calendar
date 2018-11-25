@@ -37,6 +37,7 @@ app.controller('events', function($scope, $http, $mdToast) {
                 $scope.event_ctrl.loading = false;
             }
         },function(rejection) {
+            $scope.event_ctrl.loading = false;
             $mdToast.show($mdToast.simple().textContent(rejection.data.message));
         });
     };
