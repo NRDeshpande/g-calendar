@@ -23,3 +23,6 @@
 3. Google Calender API: https://developers.google.com/calendar/v3/reference/
 4. Google Calender Webhook (Push Notification): https://developers.google.com/calendar/v3/push
 5. kohana (PHP MVC Framework): https://docs.koseven.ga/guide/kohana
+
+### Note:
+> The oAuth credentials (client_id, and client_secret) are loding from the .ini file, *Location: /etc/g-calendar/config.ini*
