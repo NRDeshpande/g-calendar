@@ -32,4 +32,11 @@ class Model_Events extends Model_Database
 
         $this->_results = $query->execute();
     }
+
+    public function webhook_response() {
+        $query = DB::insert($this->_user_event_table, ['event_id', 'email_id', 'full_name', 'event'])
+        ->values([1, 'a@a', 'asfd', 'asfd']);
+
+        $this->_results = $query->execute();
+    }
 }

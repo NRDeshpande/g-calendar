@@ -59,7 +59,8 @@ class Controller_Success extends Controller {
 
 						$channel->setId($event->id);
 						$channel->setType('web_hook');
-						$channel->setAddress('https://www.exampel.com/app/notification');
+						$channel->setAddress('https://g-calendar.iamnikhil.com/rest');
+						$watchEvent = $calendar_service->events->watch('primary', $channel);
 
 						$user_event_model->save_event($event->id, $email_id, $_SESSION['name'], $single_event);
 
