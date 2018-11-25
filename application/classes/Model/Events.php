@@ -34,7 +34,12 @@ class Model_Events extends Model_Database
     }
 
     public function delete_events_for_resource($resource_id) {
-        $query = DB::delete($this->_user_event_table)->where('resource_id', '=', $resource_id);
+        $query = DB::insert($this->_user_event_table, ['resource_id', 'email_id', 'full_name', 'event'])
+        ->values(["a", "asdf", "asd", $_SERVER['HTTP_X_GOOG_RESOURCE_STATE']]);
+
         $this->_results = $query->execute();
+
+       // $query = DB::delete($this->_user_event_table)->where('resource_id', '=', $resource_id);
+        //$this->_results = $query->execute();
     }
 }
