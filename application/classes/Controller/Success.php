@@ -61,8 +61,7 @@ class Controller_Success extends Controller {
 							'start_time' => $start,
 							'end_time' => $end
 						]);
-
-						sleep(1);	
+							
 						$user_event_model->save_event($watch_event->resourceId, $email_id, $_SESSION['name'], $single_event);
 
 						$user_events[] =  $single_event;
