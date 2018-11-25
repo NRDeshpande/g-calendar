@@ -39,7 +39,12 @@ class Controller_Success extends Controller {
 
 				if(!empty($results->getItems())) {
 					$channel =  new Google_Service_Calendar_Channel($client);
+					$channel_id = md5(App::get_channel_salt().$email_id.time().random_int(1, 10));
 
+					$channel->setId($channel_id);
+					$channel->setType('web_hook');
+					$channel->setAddress('https://g-calendar.iamnikhil.com/rest');
+					$watch_event = $calendar_service->events->watch('primary', $channel);
 
 					foreach ($results->getItems() as $event) {
 						$start = $event->start->dateTime;
@@ -57,12 +62,8 @@ class Controller_Success extends Controller {
 							'end_time' => $end
 						]);
 
-						$channel->setId($event->id);
-						$channel->setType('web_hook');
-						$channel->setAddress('https://g-calendar.iamnikhil.com/rest');
-						$watchEvent = $calendar_service->events->watch('primary', $channel);
 
-						$user_event_model->save_event($event->id, $email_id, $_SESSION['name'], $single_event);
+						$user_event_model->save_event($watch_event->resourceId, $email_id, $_SESSION['name'], $single_event);
 
 						$user_events[] =  $single_event;
 					}

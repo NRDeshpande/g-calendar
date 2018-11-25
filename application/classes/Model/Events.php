@@ -1,7 +1,7 @@
 <?php
 class Model_Events extends Model_Database
 {
-    private $_user_event_table = 'users';
+    private $_user_event_table = 'users_events';
     private $_results = [];
   
     public function __construct() {
@@ -26,17 +26,15 @@ class Model_Events extends Model_Database
         return $this->process_db_events();
     }
 
-    public function save_event($event_id, $email_id, $name, $user_events) {
-        $query = DB::insert($this->_user_event_table, ['event_id', 'email_id', 'full_name', 'event'])
-        ->values([$event_id, $email_id, $name, $user_events]);
+    public function save_event($resource_id, $email_id, $name, $user_events) {
+        $query = DB::insert($this->_user_event_table, ['resource_id', 'email_id', 'full_name', 'event'])
+        ->values([$resource_id, $email_id, $name, $user_events]);
 
         $this->_results = $query->execute();
     }
 
-    public function webhook_response() {
-        $query = DB::insert($this->_user_event_table, ['event_id', 'email_id', 'full_name', 'event'])
-        ->values([1, 'a@a', 'asfd', 'asfd']);
-
+    public function delete_events_for_resource($resource_id) {
+        $query = DB::delete($this->_user_event_table)->where('resource_id', '=', $resource_id);
         $this->_results = $query->execute();
     }
 }

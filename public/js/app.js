@@ -29,6 +29,7 @@ app.controller('events', function($scope, $http, $mdToast) {
 
     $scope.get_events = function(email_id) {
         $scope.reset_event_ctrl_scope();
+        $scope.event_ctrl.loading = true;
 
         $http.get(global.app_url+'/success/getEvents/?email_id='+email_id).then(function(resposne){
             if(resposne.data.status == "success") {

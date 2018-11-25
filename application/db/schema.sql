@@ -13,10 +13,10 @@ USE `g_calender`;
 --
 -- Table structure for table `users`
 --
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE IF NOT EXISTS `users_events` (
   `user_id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `email_id` VARCHAR(255) NOT NULL COMMENT 'User Email Id',
-  `event_id` VARCHAR(255) NOT NULL COMMENT 'Event ID',
+  `resource_id` VARCHAR(255) NOT NULL COMMENT 'Google Watch Resource ID',
   `full_name` VARCHAR(100) NOT NULL COMMENT 'User Full Name',
   `event` TEXT DEFAULT NULL COMMENT 'Event Details',
   PRIMARY KEY (`user_id`)

@@ -13,6 +13,7 @@ class App {
     private static $ini_path = "/etc/g-calendar/config.ini";
     private static $config_values = [];
     private static $app_url = null;
+    private static $google_channel_salt = "aytuy&^*&^3465.lk";
 
     public static function init() {
         # Read App config ini file
@@ -88,6 +89,10 @@ class App {
 
     public static function client_secret() {
         return self::get_config('client_secret');
+    }
+
+    public static function get_channel_salt() {
+        return self::$google_channel_salt;
     }
 
     public static function out($message="Ok", $status=true, $code=200, $data=[]) {
