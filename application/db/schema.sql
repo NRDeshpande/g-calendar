@@ -11,7 +11,7 @@ USE `g_calender`;
 -- Mysql Table(s) --
 
 --
--- Table structure for table `users`
+-- Table structure for table `users_events`
 --
 CREATE TABLE IF NOT EXISTS `users_events` (
   `user_id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
