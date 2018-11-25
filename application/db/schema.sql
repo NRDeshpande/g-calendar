@@ -14,10 +14,10 @@ USE `g_calender`;
 -- Table structure for table `users_events`
 --
 CREATE TABLE IF NOT EXISTS `users_events` (
-  `user_id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `email_id` VARCHAR(255) NOT NULL COMMENT 'User Email Id',
   `resource_id` VARCHAR(255) NOT NULL COMMENT 'Google Watch Resource ID',
   `full_name` VARCHAR(100) NOT NULL COMMENT 'User Full Name',
   `event` TEXT DEFAULT NULL COMMENT 'Event Details',
-  PRIMARY KEY (`user_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='User Event Details' AUTO_INCREMENT=1;
