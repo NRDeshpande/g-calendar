@@ -1,4 +1,4 @@
-# Google Calender App
+# Google Calendar App
 
 ### Technology Stack Backend: (LAMP) 
 
